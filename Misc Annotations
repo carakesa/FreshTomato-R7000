@@ -1,0 +1,68 @@
+EDIT: I'll post other findings to THIS POST as I remember them/find them and if anyone has anything else to contribute, I'd greatly appreciate it.
+
+Additionally, once I get a "good" setup going (which should be soon at this point), I'll try and make a new topic that's actually a bit more through, organized, and useful.
+
+====================================================
+
+Turned out "N" actually enables AC/N!
+
+Using Metageek inSSIDer, Windows Connection Properties (Win10) or a windows netsh command:
+
+netsh wlan sh networks bssid
+
+Notes
+
+For 20/40/80mhz channel bandwidth
+
+Set bandwidth (40mhz, 80mhz) then save
+
+Set Upper/Lower then save
+
+Lastly set channel then save
+
+Static DHCP (via DNS Masq Custom) Under Advanced -> DHCP/DNS -> Custom DNS Masq Entries Text Block
+
+dhcp-host=mac,ip,hostname,(lease time)
+
+one line per mac/device. Leave lease time blank for infinite. This is handy if you've got a list of your machines and just want to throw stuff into a text file.
+
+I had issues with the "Static DHCP" in basic options remembering "most" but not all of my devices. This seems to work fully.
+
+Check Tx Power
+
+via ssh connection to the router, issue the following command
+
+wl -i eth1 txpwr1
+
+wl -i eth2 txpwr1
+
+Should return 1496mW if running at Default Power setting.
+
+Overclock CPU to 1200Mhz (at your own risk!)
+
+nvram set clkfreq=1200,800 nvram commit && reboot
+
+*Note: While some people have reported success at 1400Mhz, I'm not one of them so I will discourage you from attempting it. It killed my network connections and "soft bricked" - I had to power down, reboot, ssh in, clock down, and commit. If I didn't do it fast enough, it locked back up. 1200Mhz - temps seem to be +/- 1 degree F of the defaults. My reading tells me 1600 is virtually guaranteed to fail.
+
+I think I'm going to draft up a list of notes of things I found and post it up on here once I a) figure shit out b) make sure I'm right c) have time.
+
+So...probably never, but wish me luck
+
+
+====================================================
+To be added:
+------------
+
+USB - Setup and now running Entware.
+
+Entware - configured and allowed me to install Git, Curl, etc.
+
+Git - works -- pulled in Fail2Ban
+
+curl/python-curl -- works
+
+Python -- works, running Fail2Ban
+
+Fail2Ban -- Appears to work!
+
+OpenVPN -- There's tons of these references already, but hey...why not.
