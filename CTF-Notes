@@ -1,0 +1,19 @@
+Notes from: NerdFoundryGaming:  https://www.reddit.com/user/NerdFoundryGaming/
+
+Protip, set up DNS entries via dnsmasq:
+
+(from my ATT-passthru walkthrough https://imgur.com/a/Vv0fKe6)
+
+address=/sub1.domain.com/192.168.1.50
+address=/sub2.domain.com/192.168.1.51
+address=/domain.com/192.168.1.52
+
+The last one there is a catchall for the same domain, where the other 2 define for subdomains.
+
+They should now resolve on your LAN, assuming your router is the DNS for the device.
+
+Assuming the default CIDR/IP: http://192.168.1.1/advanced-dhcpdns.asp
+
+
+
+Link to reddit post:  https://www.reddit.com/r/TomatoFTW/comments/x67ula/comment/in83rpa/?utm_source=share&utm_medium=web2x&context=3
